@@ -20,6 +20,9 @@ async function createPreview(container, fileUrl) {
     fragmentIfcLoader.settings.webIfc.OPTIMIZE_PROFILES = true;
 
     const file = await fetch(fileUrl);
+    if (!file.ok) {
+      throw new Error(`Erreur de chargement du fichier IFC : ${fileUrl}`);
+    }
     const data = await file.arrayBuffer();
     const buffer = new Uint8Array(data);
     const model = await fragmentIfcLoader.load(buffer, "example");
