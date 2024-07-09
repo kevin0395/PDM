@@ -1,4 +1,4 @@
-import * as OBC from './node_modules/openbim-components/src/index.js';
+import * as OBC from 'openbim-components';
 
 async function createPreview(container, fileUrl) {
   const components = new OBC.Components();
@@ -32,16 +32,17 @@ async function createPreview(container, fileUrl) {
   }
 }
 
-document.querySelectorAll('.preview').forEach(async (preview) => {
+const preview = document.querySelector('.preview');
+if (preview) {
   const fileUrl = `./model/${preview.getAttribute('data-ifc')}`;
   const container = document.createElement('div');
   container.style.width = '100%';
   container.style.height = '100%';
   preview.appendChild(container);
 
-  await createPreview(container, fileUrl);
+  createPreview(container, fileUrl);
 
   preview.addEventListener('click', () => {
     window.location.href = `viewer.html?file=${preview.getAttribute('data-ifc')}`;
   });
-});
+}
