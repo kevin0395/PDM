@@ -1,4 +1,4 @@
-import * as OBC from '/openbim-components';
+import * as OBC from 'openbim-components';
 
 async function createPreview(container, fileUrl) {
   const components = new OBC.Components();
