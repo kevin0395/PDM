@@ -1,4 +1,4 @@
-import * as OBC from 'openbim-components';
+import * as OBC from '/openbim-components';
 
 async function loadIfc(fileUrl) {
   const container = document.getElementById('container');
